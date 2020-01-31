@@ -6,24 +6,6 @@ from subprocess import check_call
 import os
 
 
-class PostDevelopCommand(develop):
-    """Post-installation for development mode."""
-
-    def run(self):
-        # os.system("wget -O anserini-0.7.0-fatjar.jar https://search.maven.org/remotecontent?filepath=io/anserini/anserini/0.7.0/anserini-0.7.0-fatjar.jar")
-        # os.system("mv anserini-0.7.0-fatjar.jar capreolus/")
-        develop.run(self)
-
-
-class PostInstallCommand(install):
-    """Post-installation for installation mode."""
-
-    def run(self):
-        # os.system("wget -O anserini-0.7.0-fatjar.jar https://search.maven.org/remotecontent?filepath=io/anserini/anserini/0.7.0/anserini-0.7.0-fatjar.jar")
-        # os.system("mv anserini-0.7.0-fatjar.jar capreolus/")
-        install.run(self)
-
-
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
@@ -66,12 +48,11 @@ setuptools.setup(
         "django==2.2.1",
         "pytest-mock==1.10.4",
         "mock",
-        "pyserini==0.7.0.0",
+        "pyserini==0.7.2",
         "scipy==1.3.0",
     ],
     classifiers=["Programming Language :: Python :: 3", "Operating System :: OS Independent"],
     python_requires=">=3.6",
-    cmdclass={"develop": PostDevelopCommand, "install": PostInstallCommand},
     include_package_data=True,
     scripts=["scripts/capreolus"],
 )
